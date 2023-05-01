@@ -3,7 +3,7 @@ require 'csv'
 
 class Gossip
 
-  attr_reader :content, :author
+  attr_accessor :content, :author
 
 
   def initialize(author, content)
@@ -34,17 +34,20 @@ class Gossip
     return Gossip.all[id.to_i - 1]
   end
 
-
+  
   def self.update(id, author, content)
     all_gossips = Gossip.all
-    all_gossips[id.to_i - 1] = Gossip.new(author, content)
+    all_gossips[id.to_i - 1].author = author
+    all_gossips[id.to_i - 1].content = content
+  
     CSV.open("/home/maddev/THP/W5/D1/Franck-Sinatra/db/gossip.csv", "w") do |csv|
       all_gossips.each do |gossip|
         csv << [gossip.author, gossip.content]
       end
     end
-  end 
-
+  end
+  
+  
 
 end
 
