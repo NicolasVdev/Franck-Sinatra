@@ -1,3 +1,3 @@
 # Franck-Sinatra
 
-https://open.spotify.com/artist/1Mxqyy3pSjf8kZZL4QVxS0
+A bit different from Frank Sinatra : https://open.spotify.com/artist/1Mxqyy3pSjf8kZZL4QVxS0
