@@ -31,11 +31,21 @@ class Gossip
 
 
   def self.find(id)
-    all_gossips = self.all
-      return all_gossips[id-1]
+    return Gossip.all[id.to_i - 1]
+  end
+
+
+  def self.update(id, author, content)
+    all_gossips = Gossip.all
+    all_gossips[id.to_i - 1] = Gossip.new(author, content)
+    CSV.open("/home/maddev/THP/W5/D1/Franck-Sinatra/db/gossip.csv", "w") do |csv|
+      all_gossips.each do |gossip|
+        csv << [gossip.author, gossip.content]
+      end
     end
+  end 
 
 
 end
 
-  binding.pry
+  # binding.pry
